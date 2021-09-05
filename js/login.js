@@ -11,22 +11,32 @@ function validateUser(array, userIn, passwordIn) {
     }
 
     return false;
+}  
+
+function mostrarUsuario() {
+
+    if (localStorage.getItem("usuario")) {
+
+        let mi_usuario = localStorage.getItem("usuario");
+
+        document.getElementById("usuario").innerHTML = 
+            "Usuario: " + mi_usuario + "<br>";
+    }
 }
 
-
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("submitBtn").addEventListener("click", function () {
 
-        let inputEmail = document.getElementById("inputEmail");
+        let usuario = document.getElementById("usuario");
         let inputPassword = document.getElementById("inputPassword");
         let camposCompletos = true;
 
-        if (inputEmail.value === '') {
-            inputEmail.classList.add("invalid");
+        if (usuario.value === '') {
+            usuario.classList.add("invalid");
             camposCompletos = false;
         } else {
-            inputEmail.classList.remove("invalid");
+            usuario.classList.remove("invalid");
         }
 
         if (inputPassword.value === '') {
@@ -36,20 +46,18 @@ document.addEventListener("DOMContentLoaded", function(e){
             inputPassword.classList.remove("invalid");
         }
 
+        if ((usuario.value === '') && (inputPassword.value === '')) {
+            usuario.classList.add("invalid");
+            inputPassword.classList.add("invalid");
+            camposCompletos = false;
+        } else {
+            usuario.classList.remove("invalid");
+            inputPassword.classList.remove("invalid");
+        }
+
         if (camposCompletos) {
-
-            getJSONData(USUARIOS_URL).then(function (resultado) {
-                if (resultado.status === "ok") {
-                    usersArray = resultado.data;
-
-                    if (validateUser(usersArray, inputEmail.value, inputPassword.value)) {
-                        window.location = 'index.html';
-                    } else {
-                        alert("Usuario o contraseña incorrectas!")
-                    }
-                }
-            });
-
+            mostrarUsuario()
+            window.location = 'inicio.html';
         } else {
             alert("Debes ingresar los datos!")
         }

@@ -13,23 +13,35 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
   </head>
-  <body>
+  <body onload="mostrarUsuario()">
     <nav class="site-header sticky-top py-1 bg-dark">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <div id="user" style="color:white"></div>
       </div>
     </nav>
   <main role="main" class="pb-5">
     <div class="text-center p-4">
       <h2>Listado de autos</h2>
     </div>
+    <div class="text-center p-4">
+      <label>Ordenar por:</label> <br>
+      <button id="sortCostAsc">Ordenar Ascendente</button>
+      <button id="sortCostDesc">Ordenar Descendente</button>
+      <button id="sortRelDesc">Ordenar por Relevancia</button>
+      <p></p>
+      <label for="buttonFiltrar">Filtrar por:</label> <br>
+      <input type="number" id="inputMinFiltrar" placeholder="min."> <br><br>
+      <input type="number" id="inputMaxFiltrar" placeholder="max."> <br><br>
+      <button id="buttonFiltrar">Filtrar</button>
+    </div>
     <div class="container">
       <div class="row">
-        <div class="list-group" id="cat-list-container"></div>
+        <div class="list-group" id="listado"></div>
       </div>
     </div>
   </main>
@@ -49,6 +61,18 @@
       </div>
     </footer>
     <div id="spinner-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+    <script>
+      function mostrarUsuario() {
+  
+        if (localStorage.getItem("usuario")) {
+  
+          let mi_usuario = localStorage.getItem("usuario");
+  
+          document.getElementById("user").innerHTML =
+            "Usuario: " + mi_usuario + "<br>";
+        }
+      }
+    </script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>

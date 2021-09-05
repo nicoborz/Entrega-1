@@ -42,19 +42,29 @@
 
     <h1>Inicio de sesión</h1><br>
 
-    <form action="inicio.html">
-      <label for="inputEmail">Email:</label> <br>
-      <input type="email" id="inputEmail" placeholder="Email" name="mail" required> <br><br>
+    <label for="usuario">Email:</label> <br>
+    <input type="text" id="usuario" placeholder="Email"> <br><br>
 
-      <label for="inputPassword">Contraseña:</label> <br>
-      <input type="password" id="inputPassword" placeholder="Contraseña" name="pass" required> <br><br>
+    <label for="inputPassword">Contraseña:</label> <br>
+    <input type="password" id="inputPassword" placeholder="Contraseña"> <br><br>
 
-      <button id="submitBtn">Ingresar</button>
+    <button id="submitBtn" onclick="guardarUsuario()">Ingresar</button>
 
-    </form>
   </div>
 
+  <script>
+  
+  function guardarUsuario() {
+    /*let mi_usuario = document.getElementById("usuario").value;
+
+    let mi_usuario_json = JSON.stringify(mi_usuario);*/
+
+    localStorage.setItem("usuario", document.getElementById("usuario").value);
+  }
+
+  </script>
   <script src="js/init.js"></script>
+  <script src="js/login.js"></script>
 </body>
 
 </html>
