@@ -33,7 +33,7 @@ var producto;
     document.getElementById("contenido").innerHTML = info;
 }*/
 
-function traerLibro(product) {
+function traerProducto(product) {
     var info = "";
 
     info += `
@@ -60,5 +60,42 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             
         }
+    })
+});
+
+function encuentraProducto() {
+    let id = JSON.parse(localStorage.getItem("productoInfo")).productoid;
+    let URL;
+
+    switch (id) {
+        case 1:
+            URL = CELERIO_INFO;
+            break;
+
+        case 2:
+            URL = ONIXJOY_INFO;
+            break;
+
+        case 3:
+            URL = FIATWAY_INFO;
+            break;
+
+        case 4:
+            URL = PEUGEOT208_INFO;
+            break;
+        default: "";
+
+
+    }
+    return URL;
+}
+
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(encuentraProducto()).then(function (result) {
+        if (result.status === "ok") {
+            productoEncontrado = result.data;
+            traerProducto(productoEncontrado);
+        }
+
     })
 });

@@ -6,10 +6,10 @@ const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678
 const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
-const CELERIO_INFO = ;
-const ONIXJOY_INFO = ;
-const FIATWAY_INFO = ;
-const PEUGEOT208_INFO = ;
+const CELERIO_INFO = "https://nicoborz.github.io/Entrega-1/jsons/susukicelerio.json";
+const ONIXJOY_INFO = "https://nicoborz.github.io/Entrega-1/jsons/chevroletonixjoy.json";
+const FIATWAY_INFO = "https://nicoborz.github.io/Entrega-1/jsons/fiatway.json";
+const PEUGEOT208_INFO = "https://nicoborz.github.io/Entrega-1/jsons/peugeot208.json";
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
