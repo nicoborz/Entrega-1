@@ -26,6 +26,7 @@ function showProductos(array) {
                         <p> `+ producto.cost + " " + producto.currency +`</p> 
                         </div>
                         <small class="text-muted">` + producto.soldCount + ` artículos</small> 
+                        <button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>
                     </div>
 
                 </div>
@@ -60,6 +61,7 @@ function showProductosFiltro(array) {
                             <p> `+ producto.cost + " " + producto.currency +`</p> 
                             </div>
                             <small class="text-muted">` + producto.soldCount + ` artículos</small> 
+                            <button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>
                         </div>
 
                     </div>
@@ -101,6 +103,11 @@ function sortProductos(criterio, array) {
     } 
 
     return result;
+}
+
+function verProducto(name){
+    localStorage.setItem("producto",JSON.stringify({productoname: name}));
+    window.location =  'verproducto.html'
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
