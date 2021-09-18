@@ -26,13 +26,13 @@ function showProductos(array) {
                         <p> `+ producto.cost + " " + producto.currency +`</p> 
                         </div>
                         <small class="text-muted">` + producto.soldCount + ` artículos</small> 
-                        <button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>
                     </div>
 
                 </div>
             </div>
         </div>
-        `
+        `;
+        contenido += '<button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>';
         document.getElementById("listado").innerHTML = contenido; 
     }
 }
@@ -61,14 +61,14 @@ function showProductosFiltro(array) {
                             <p> `+ producto.cost + " " + producto.currency +`</p> 
                             </div>
                             <small class="text-muted">` + producto.soldCount + ` artículos</small> 
-                            <button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>
                         </div>
 
                     </div>
                 </div>
             </div>
             `;
-            
+            contenido += '<button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>';
+
             }
 
         document.getElementById("listado").innerHTML = contenido; 

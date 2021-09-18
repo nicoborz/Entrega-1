@@ -2,6 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var producto;   
+var productoEncontrado;
 
 //ta todo mal esto checkearlo devuelta
 
@@ -22,7 +23,7 @@ var producto;
                         <p> `+ producto.cost + " " + producto.currency +`</p> 
                         </div>
                         <small class="text-muted">` + producto.soldCount + ` artículos</small> 
-                        <button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>
+                        <button style="float: right;" onclick="verProducto('+ producto.id + ')">Ver Producto</button>
                     </div>
 
                 </div>
@@ -54,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             result.data.forEach(product => {
                 if (product.name == JSON.parse(localStorage.getItem('producto')).productoname){
                     producto = product;
-                    traerProducto(producto);
+                    encuentraProducto(producto);
                 }
             } );
 
@@ -64,23 +65,23 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 function encuentraProducto() {
-    let id = JSON.parse(localStorage.getItem("productoInfo")).productoid;
+    let name = JSON.parse(localStorage.getItem("producto")).productoname;
     let URL;
 
-    switch (id) {
-        case 1:
+    switch (name) {
+        case "Suzuki Celerio":
             URL = CELERIO_INFO;
             break;
 
-        case 2:
+        case "Chevrolet Onix Joy":
             URL = ONIXJOY_INFO;
             break;
 
-        case 3:
+        case "Fiat Way":
             URL = FIATWAY_INFO;
             break;
 
-        case 4:
+        case "Peugeot 208":
             URL = PEUGEOT208_INFO;
             break;
         default: "";
