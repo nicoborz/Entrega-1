@@ -1,0 +1,9 @@
+{
+    "id": "1",
+    "name": "Suzuki Celerio",
+    "description": "Un auto que se ha ganado la buena fama por su economía con el combustible.",
+    "cost": 12500,
+    "currency": "USD",
+    "imgSrc": "img/prod3.jpg",
+    "soldCount": 25
+}

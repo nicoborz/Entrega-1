@@ -1,0 +1,9 @@
+{
+    "id": "3",
+    "name": "Fiat Way",
+    "description": "La versión de Fiat que brinda confort y a un precio accesible.",
+    "cost": 14500,
+    "currency": "USD",
+    "imgSrc": "img/prod2.jpg",
+    "soldCount": 52
+}
