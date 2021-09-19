@@ -6,72 +6,87 @@ var productosArray = [];
 var contenido;
 var minPag;
 var maxPag;
+var minCount = undefined;
+var maxCount = undefined;
 
-function showProductos(array) {
+/*function showProductos(array) {
     let contenido = "";
 
-    for(let i = 0; i < array.length; i++){ 
+    for (let i = 0; i < array.length; i++) {
         let producto = array[i];
-        contenido += `
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div class="mb-1">
-                        <h4>`+ producto.name +`</h4> 
-                        <p> `+ producto.description +`</p> 
-                        <p> `+ producto.cost + " " + producto.currency +`</p> 
-                        </div>
-                        <small class="text-muted">` + producto.soldCount + ` artículos</small> 
-                    </div>
+        contenido += 'Nombre: ' + producto.name + '<br>';
+        contenido += 'Descripcion: ' + producto.description + '<br>';
+        contenido += 'Costo: ' + producto.cost + '<br>';
+        contenido += '<button style="float: right;" onclick="verProducto(' + producto.name + ')">Ver Producto</button>';
+        contenido += '<br><hr><br>';;
+        document.getElementById("listado").innerHTML = contenido;
+    }
+}*/
 
+function showProductos() {
+    let htmlContentToAppend = "";
+    for(let i = 0; i < productosArray.length; i++){
+        let product1 = productosArray[i];
+
+        if (((minCount == undefined) || (minCount != undefined && parseInt(product1.productCount) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product1.productCount) <= maxCount))){
+
+            htmlContentToAppend += `
+            <a href="product-info.html" class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + product1.imgSrc + `" alt="` + product1.description + `" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">`+ product1.name +`</h4>
+                            <small class="text-muted">` + product1.soldCount + ` artículos</small>
+                        </div>
+                        <p class="mb-1">` + product1.description + `</p>
+                        <p class="mb-1">` + product1.cost + `</p>
+                        <p class="mb-1">` + product1.currency + `</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        `;
-        contenido += '<button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>';
-        document.getElementById("listado").innerHTML = contenido; 
+            </a>
+            `
+        }
+
+        document.getElementById("listado").innerHTML = htmlContentToAppend;
     }
 }
 
 function showProductosFiltro(array) {
-    
+
     let contenido = "";
-    
-    for(let i = 0; i < array.length; i++){ 
-        let producto = array[i];
-        
-        if (((minPag == undefined) || (minPag != undefined && parseInt(producto.cost) >= minPag)) && 
-            ((maxPag == undefined) || (maxPag != undefined && parseInt(producto.cost) <= maxPag))) {
-                
-                contenido += `
-            <div class="list-group-item list-group-item-action">
+
+    for (let i = 0; i < array.length; i++) {
+        let product1 = array[i];
+
+        if (((minPag == undefined) || (minPag != undefined && parseInt(product1.cost) >= minPag)) &&
+            ((maxPag == undefined) || (maxPag != undefined && parseInt(product1.cost) <= maxPag))) {
+
+            contenido += `
+            <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
-                        <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
+                        <img src="` + product1.imgSrc + `" alt="` + product1.description + `" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <div class="mb-1">
-                            <h4>`+ producto.name +`</h4> 
-                            <p> `+ producto.description +`</p> 
-                            <p> `+ producto.cost + " " + producto.currency +`</p> 
-                            </div>
-                            <small class="text-muted">` + producto.soldCount + ` artículos</small> 
+                            <h4 class="mb-1">`+ product1.name +`</h4>
+                            <small class="text-muted">` + product1.soldCount + ` artículos</small>
                         </div>
-
+                        <p class="mb-1">` + product1.description + `</p>
+                        <p class="mb-1">` + product1.cost + `</p>
+                        <p class="mb-1">` + product1.currency + `</p>
                     </div>
                 </div>
-            </div>
-            `;
-            contenido += '<button style="float: right;" onclick="verProducto('+ producto.name + ')">Ver Producto</button>';
+            </a>
+            `
 
-            }
+        }
 
-        document.getElementById("listado").innerHTML = contenido; 
+        document.getElementById("listado").innerHTML = contenido;
     }
 }
 
@@ -87,28 +102,28 @@ function sortProductos(criterio, array) {
 
     } else if (criterio === 2) {
         result = array.sort(
-          function (a, b) {
-              if (a.cost > b.cost) { return -1 }
-              if (a.cost < b.cost) { return 1 }
-              return 0;
-          });
-                   
+            function (a, b) {
+                if (a.cost > b.cost) { return -1 }
+                if (a.cost < b.cost) { return 1 }
+                return 0;
+            });
+
     } else if (criterio === 3) {
         result = array.sort(
-            function(a, b) {
+            function (a, b) {
                 if (a.soldCount > b.soldCount) { return -1; }
                 if (a.soldCount < b.soldCount) { return 1; }
                 return 0;
             });
-    } 
+    }
 
     return result;
 }
 
-function verProducto(name){
-    localStorage.setItem("producto",JSON.stringify({productoname: name}));
-    window.location =  'verproducto.html'
-}
+/*function verProducto(name) {
+    localStorage.setItem("producto", JSON.stringify({ producto1: name }));
+    window.location = 'verproducto.html'
+}*/
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
@@ -146,14 +161,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
         minPag = document.getElementById("inputMinFiltrar").value;
         maxPag = document.getElementById("inputMaxFiltrar").value;
 
-        if ((minPag != undefined) && (minPag != "") && (parseInt(minPag)) >=0 ) {
+        if ((minPag != undefined) && (minPag != "") && (parseInt(minPag)) >= 0) {
             minPag = parseInt(minPag);
         }
         else {
             minPag = undefined;
         }
 
-        if ((maxPag != undefined) && (maxPag != "") && (parseInt(maxPag)) >=0 ) {
+        if ((maxPag != undefined) && (maxPag != "") && (parseInt(maxPag)) >= 0) {
             maxPag = parseInt(maxPag);
         }
         else {
