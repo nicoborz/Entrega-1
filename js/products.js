@@ -9,20 +9,6 @@ var maxPag;
 var minCount = undefined;
 var maxCount = undefined;
 
-/*function showProductos(array) {
-    let contenido = "";
-
-    for (let i = 0; i < array.length; i++) {
-        let producto = array[i];
-        contenido += 'Nombre: ' + producto.name + '<br>';
-        contenido += 'Descripcion: ' + producto.description + '<br>';
-        contenido += 'Costo: ' + producto.cost + '<br>';
-        contenido += '<button style="float: right;" onclick="verProducto(' + producto.name + ')">Ver Producto</button>';
-        contenido += '<br><hr><br>';;
-        document.getElementById("listado").innerHTML = contenido;
-    }
-}*/
-
 function showProductos() {
     let htmlContentToAppend = "";
     for(let i = 0; i < productosArray.length; i++){
