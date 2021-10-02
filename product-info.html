@@ -17,12 +17,22 @@
 <body onload="mostrarUsuario()">
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <div id="user" style="color:white"></div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="user" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button" onclick="window.location = 'cart.html'">Ver mi carrito</button>
+          <button class="dropdown-item" type="button" onclick="window.location = 'my-profile.html'">Mi perfil</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" type="button" onclick="window.location = 'index.html'">Cerrar sesion</button>
+        </div>
+      </div>
     </div>
   </nav>
   <main role="main">
@@ -33,40 +43,43 @@
         <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
           seleccionado previamente, siempre se visualizará el presente: <strong>Auto:</strong>.</p>
       </div>
-      <h3 id="producto2Name"></h3>
+      <h3 id="productoSimpleName"></h3>
       <hr class="my-3">
       <dl>
         <dt>Descripción</dt>
+        <p></p>
         <dd>
-          <p id="producto2Description"></p>
+          <p id="productoSimpleDescription"></p>
         </dd>
 
         <dt>Cantidad de productos vendidos</dt>
         <dd>
-          <p id="productSoldCount"></p>
+          <p id="productoSimpleSoldCount"></p>
         </dd>
 
         <dt>Precio</dt>
         <dd>
-          <p id="productCost"></p>
+          <p id="productoSimpleCost"></p>
         </dd>
 
         <dt>Moneda</dt>
         <dd>
-          <p id="productCurrency"></p>
+          <p id="productoSimpleCurrency"></p>
         </dd>
         <dt>Categoría</dt>
         <dd>
-          <p id="productCategory"></p>
+          <p id="productoSimpleCategory"></p>
         </dd>
 
-        <dt>Foto</dt>
+        <dt>Fotos </dt>
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
           </div>
         </dd>
       </dl>
+
       <dt>Calificaciones</dt>
+      <p></p>
       <dd>
         <div class="container">
           <div class="row">
@@ -74,15 +87,27 @@
           </div>
         </div>
       </dd>
+
       <dt>Calificar: </dt>
-        <dd>
-          <textarea name="comentario" rows="10" cols="40" placeholder="Escribe aquí tu comentario"></textarea>
-          <p></p>
-          <button id="submitBtnComment">Calificar</button>
-          <input type="number" id="inputCalificacion" placeholder="0/5"> <br><br>
+      <p></p>
+      <dd>
+        <textarea name="comentario" rows="10" cols="40" placeholder="Escribe aquí tu comentario"></textarea>
+        <p></p>
+        <button id="submitBtnComment">Calificar</button>
+        <input type="number" id="inputCalificacion" placeholder="0/5"> <br><br>
+      </dd>
+
+      <dt>También te puede interesar: </dt>
+      <p></p>
+      <dd>
+        <div class="container">
+          <div class="row">
+            <div class="list-group" id="listadoRelacionados"></div>
           </div>
-        </dd>
-      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
+        </div>
+      </dd>
+    </div>
+    <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
   </main>
   <footer class="text-muted">
