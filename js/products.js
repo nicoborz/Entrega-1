@@ -11,29 +11,30 @@ var maxCount = undefined;
 
 function showProductos() {
     let htmlContentToAppend = "";
-    for(let i = 0; i < productosArray.length; i++){
+    for (let i = 0; i < productosArray.length; i++) {
         let product1 = productosArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product1.productCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product1.productCount) <= maxCount))){
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product1.productCount) <= maxCount))) {
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product1.imgSrc + `" alt="` + product1.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product1.name +`</h4>
-                            <small class="text-muted">` + product1.soldCount + ` artículos</small>
-                        </div>
-                        <p class="mb-1">` + product1.description + `</p>
-                        <p class="mb-1">` + product1.cost + `</p>
-                        <p class="mb-1">` + product1.currency + `</p>
+
+        <div class="row">
+            <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+            <img src="` + product1.imgSrc + `" alt="` + product1.description + `" class="img-thumbnail">
+                <div class="card-body">
+                <p class="card-text">` + product1.description + `</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="text">
+                    <text type="text" class="text">` + product1.cost + `</text>
+                    <text type="text" class="text">` + product1.currency + `</text>
                     </div>
                 </div>
-            </a>
+                </div>
+            </div>
+            </div>
+        </div>
             `
         }
 
@@ -59,7 +60,7 @@ function showProductosFiltro(array) {
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product1.name +`</h4>
+                            <h4 class="mb-1">`+ product1.name + `</h4>
                             <small class="text-muted">` + product1.soldCount + ` artículos</small>
                         </div>
                         <p class="mb-1">` + product1.description + `</p>

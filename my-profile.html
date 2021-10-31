@@ -54,32 +54,28 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <div class="container">
+    <div class="card needs-validation" style="width: max-content; margin: 50px auto ;" id="FormTotal" novalidate>
+      <div class="card-header">Mi perfil</div>
+      <div class="card-body">
+        <form action="" id="Formulario">
+          <div class="row py-2">
+            <input type="text" class="form-control" placeholder="Nombres y apellidos" id="nombres" required>
+          </div>
+          <div class="row py-2">
+            <input type="text" placeholder="Edad" id="edad" minlength="8" maxlength="14" class="form-control">
+          </div>
+          <div class="row py-2">
+            <input type="email" class="form-control" placeholder="email" id="mail" required>
+          </div>
+          <div class="row py-2">
+            <input type="text" placeholder="Telefono" id="tel" minlength="8" maxlength="14" class="form-control">
+          </div>
+        </form>
+      </div>
+
+      <button type="submit" id="guardarBtn" onclick="guardarDatosPerfil()"> Guardar </button>
+
     </div>
   </div>
   <script>
